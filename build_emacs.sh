@@ -13,5 +13,10 @@ patch -p1 < emacs-25.2-inline.patch
 ./configure --with-ns "--enable-locallisppath=/Library/Application Support/Emacs/${version}/site-lisp:/Library/Application Support/Emacs/site-lisp" --with-modules
 make -j
 make install
-mkdir -p dist
-hdiutil create ../Emacs.dmg -volname "Emacs" -srcfolder "./nextstep"
+
+mkdir -p $HOME/dmg
+ln -s /Applications $HOME/dmg/Applicatons
+mv nextstep/Emacs.app $HOME/dmg/
+
+mkdir -p ../dist
+hdiutil create ../dist/Emacs.dmg -volname "Emacs" -srcfolder $HOME/dmg

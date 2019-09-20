@@ -17,8 +17,16 @@ jobs:
       - name: "Build"
         run: ./build_emacs.sh 26.3
 
-      - name: "Store Artifacts"
-        uses: actions/upload-artifact@master
+      - name: "setup Go for use ghr"
+        uses: actions/setup-go@v1
         with:
-          name: Emacs.dmg
-          path: ./Emacs.dmg
+          go-version: 1.13
+        id: go
+
+      - name: "Get ghr"
+        run: go get github.com/tcnksm/ghr
+
+      - name: "Make Release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: $HOME/go/bin/ghr -replace v26.3 dist/
