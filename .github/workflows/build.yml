@@ -29,4 +29,4 @@ jobs:
       - name: "Make Release"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: $HOME/go/ghr v26.3 dist/
+        run: $HOME/go/bin/ghr v26.3 dist/
