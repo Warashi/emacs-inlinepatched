@@ -1,0 +1,32 @@
+name: "Build"
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build:
+    name: "Build"
+    runs-on: macos-latest
+    steps:
+      - name: "setup Go for use ghr"
+        uses: actions/setup-go@v1
+        with:
+          version: 1.13
+        id: go
+
+      - name: "checkout"
+        uses: actions/checkout@master
+
+      - name: "Ensure Dependencies"
+        run: ./ensure_dependencies.sh
+
+      - name: "Build"
+        run: ./build_emacs.sh 26.3
+
+      - name: "Get ghr"
+        run: go get github.com/tcnksm/ghr
+
+      - name: "Make Release"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: ghr v26.3 dist/
