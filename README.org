@@ -1,0 +1,4 @@
+* インラインパッチを当てたNS版Emacs
+
+masterにpushすると、Emacsをビルドして Release にdmgが上がります。
+バージョンアップの際には、 `.github/workflows/build.yml` の `Build` と `Make Release` で指定しているバージョンを書き換えること。
