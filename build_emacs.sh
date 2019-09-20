@@ -14,4 +14,4 @@ patch -p1 < emacs-25.2-inline.patch
 make -j
 make install
 mkdir -p dist
-tar -cf dist/Emacs.tar.xz -C nextstep Emacs.app
+hdiutil create dist/Emacs.dmg -volname "Emacs" -srcfolder "./nextstep"
