@@ -21,4 +21,4 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: Emacs.dmg
-          path: $HOME/Emacs.dmg
+          path: ./Emacs.dmg

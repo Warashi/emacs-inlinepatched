@@ -14,4 +14,4 @@ patch -p1 < emacs-25.2-inline.patch
 make -j
 make install
 mkdir -p dist
-hdiutil create $HOME/Emacs.dmg -volname "Emacs" -srcfolder "./nextstep"
+hdiutil create ../Emacs.dmg -volname "Emacs" -srcfolder "./nextstep"
