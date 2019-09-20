@@ -18,6 +18,7 @@ jobs:
         run: ./build_emacs.sh 26.3
 
       - name: "Store Artifacts"
+        uses: actions/upload-artifact@master
         with:
           name: Emacs.dmg
           path: $HOME/Emacs.dmg
