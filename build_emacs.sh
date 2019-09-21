@@ -19,4 +19,4 @@ ln -s /Applications $HOME/dmg/Applicatons
 mv nextstep/Emacs.app $HOME/dmg/
 
 mkdir -p ../dist
-hdiutil create ../dist/Emacs.dmg -volname "Emacs" -srcfolder $HOME/dmg
+hdiutil create ../dist/Emacs-mojave.dmg -volname "Emacs" -srcfolder $HOME/dmg
