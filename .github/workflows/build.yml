@@ -6,7 +6,7 @@ on:
 jobs:
   build:
     name: "Build"
-    runs-on: macos-latest
+    runs-on: macos-10.14
     steps:
       - name: "checkout"
         uses: actions/checkout@master
