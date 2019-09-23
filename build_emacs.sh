@@ -10,7 +10,7 @@ curl -L -O https://gist.githubusercontent.com/takaxp/3314a153f6d02d82ef1833638d3
 patch -p1 < emacs-25.2-inline.patch
 
 ./autogen.sh
-./configure --with-ns "--enable-locallisppath=/Library/Application Support/Emacs/${version}/site-lisp:/Library/Application Support/Emacs/site-lisp" --with-modules
+./configure --with-modules --with-ns "--enable-locallisppath=/Library/Application Support/Emacs/${version}/site-lisp:/Library/Application Support/Emacs/site-lisp" '--datarootdir=/Applications/Emacs.app/Contents/Resources'
 make -j
 make install
 
