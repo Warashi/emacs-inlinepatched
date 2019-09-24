@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         os: [macos-10.14]
-        emacs: [25.3, 26.3]
+        emacs: [26.3]
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
