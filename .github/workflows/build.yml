@@ -27,7 +27,7 @@ jobs:
         uses: actions/upload-artifact@master
         with:
           name: artifacts
-          path: dist/Emacs-${{ matrix.os }}.dmg
+          path: dist/Emacs-${{ matrix.emacs }}-${{ matrix.os }}.dmg
 
   release:
     name: Release
