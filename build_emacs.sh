@@ -22,4 +22,4 @@ ln -sf /Applications $HOME/dmg/Applicatons
 mv ./nextstep/Emacs.app $HOME/dmg/
 
 mkdir -p ../dist
-hdiutil create ../dist/Emacs-$os.dmg -volname "Emacs" -srcfolder $HOME/dmg
+hdiutil create ../dist/Emacs-$version-$os.dmg -volname "Emacs" -srcfolder $HOME/dmg
