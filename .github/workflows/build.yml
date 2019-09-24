@@ -50,5 +50,6 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          echo $GITHUB_REF
-          $HOME/go/bin/ghr $GITHUB_REF artifacts/
+          TAGNAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
+          echo $TAGNAME
+          $HOME/go/bin/ghr $TAGNAME artifacts/
