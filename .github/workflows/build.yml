@@ -52,4 +52,4 @@ jobs:
         run: |
           TAGNAME=$(jq --raw-output .ref "$GITHUB_EVENT_PATH")
           echo $TAGNAME
-          $HOME/go/bin/ghr $TAGNAME artifacts/
+          $HOME/go/bin/ghr -u $GITHUB_ACTOR -r $GITHUB_REPOSITORY $TAGNAME artifacts/
