@@ -21,6 +21,17 @@ jobs:
       - name: Build
         run: ./build_emacs.sh ${{ matrix.emacs }} ${{ matrix.os }}
 
+      - name: Save Emacs.app
+        uses: actions/upload-artifact@master
+        with:
+          name: artifacts
+          path: dist/Emacs-${{ matrix.os }}.dmg
+
+  release:
+    name: Release
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: setup Go for use ghr
         uses: actions/setup-go@v1
         with:
@@ -30,7 +41,14 @@ jobs:
       - name: Get ghr
         run: go get github.com/tcnksm/ghr
 
+      - name: Get Artifacts
+        uses: actions/download-artifact@master
+        with:
+          name: artifacts
+
       - name: Make Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: $HOME/go/bin/ghr $GITHUB_REF dist/
+        run: |
+          echo $GITHUB_REF
+          $HOME/go/bin/ghr $GITHUB_REF artifacts/
