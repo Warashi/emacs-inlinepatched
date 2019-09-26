@@ -8,20 +8,20 @@ jobs:
     name: Build
     strategy:
       matrix:
-        os: [macos-10.14]
+        os: [macOS-10.14]
         emacs: [26.3]
     runs-on: ${{ matrix.os }}
     steps:
       - name: checkout
         uses: actions/checkout@master
-        with:
-          fetch-depth: 1
 
       - name: Ensure Dependencies
         run: ./ensure_dependencies.sh
 
       - name: Build
-        run: ./build_emacs.sh ${{ matrix.emacs }} ${{ matrix.os }}
+        run: ./build_emacs.sh
+        with:
+          emacs_version: ${{ matrix.emacs }}
 
       - name: Save Emacs.app
         uses: actions/upload-artifact@master
