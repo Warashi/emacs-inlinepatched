@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd)"
-EMACS_VERSION=${INPUT_EMACS_VERSION}
+EMACS_VERSION=${1}
 OS_VERSION="$(sw_vers -productVersion | cut -f '1,2' -d '.')"
 
 curl -L -O "http://ftpmirror.gnu.org/emacs/emacs-${EMACS_VERSION}.tar.xz"
