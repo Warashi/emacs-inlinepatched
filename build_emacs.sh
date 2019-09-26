@@ -3,6 +3,7 @@ set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd)"
 EMACS_VERSION=${1}
 OS_VERSION="$(sw_vers -productVersion | cut -f '1,2' -d '.')"
+export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 
 curl -L -O "http://ftpmirror.gnu.org/emacs/emacs-${EMACS_VERSION}.tar.xz"
 tar -xf "emacs-${EMACS_VERSION}.tar.xz"
