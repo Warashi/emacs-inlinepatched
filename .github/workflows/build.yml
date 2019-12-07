@@ -19,7 +19,7 @@ jobs:
         run: ./ensure_dependencies.sh
 
       - name: Build
-        run: ./build_emacs.sh ${{ matrix.emacs }}
+        run: ./build_emacs.sh ${{ matrix.emacs }} ${{ matrix.os }}
 
       - name: Save Emacs.app
         uses: actions/upload-artifact@master

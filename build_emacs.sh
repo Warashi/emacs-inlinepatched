@@ -2,7 +2,7 @@
 set -euo pipefail
 script_dir="$(cd "$(dirname "${BASH_SOURCE:-$0}")"; pwd)"
 EMACS_VERSION=${1}
-OS_VERSION="$(sw_vers -productVersion | cut -f '1,2' -d '.')"
+OS_VERSION=${2}
 export PATH="$(brew --prefix gnu-sed)/libexec/gnubin:$PATH"
 export LIBXML2_CFLAGS="-I$(xcrun --show-sdk-path)/usr/include/libxml2"
 
@@ -24,4 +24,4 @@ ln -sf /Applications $HOME/dmg/Applicatons
 mv ./nextstep/Emacs.app $HOME/dmg/
 
 mkdir -p ../dist
-hdiutil create "../dist/Emacs-${EMACS_VERSION}-macOS-${OS_VERSION}.dmg" -volname "Emacs" -srcfolder $HOME/dmg
+hdiutil create "../dist/Emacs-${EMACS_VERSION}-${OS_VERSION}.dmg" -volname "Emacs" -srcfolder $HOME/dmg
